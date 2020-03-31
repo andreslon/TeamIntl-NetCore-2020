@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Team.NetCore.Domain.Interfaces;
 using Team.NetCore.Web.Models;
 
 namespace Team.NetCore.Web.Controllers
@@ -13,9 +14,12 @@ namespace Team.NetCore.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IClientservice clientservice)
         {
             _logger = logger;
+            double money = clientservice.GetMoney();
+            string name = clientservice.GetName();
         }
 
         public IActionResult Index()

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Team.NetCore.Domain.Interfaces;
+using Team.NetCore.Domain.Services;
 
 namespace Team.NetCore.Web
 {
@@ -23,6 +25,19 @@ namespace Team.NetCore.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //string msg = Configuration["environmentName"];
+            //string lead = Configuration["team:lead"];
+            //string sqlConnection = Configuration.GetConnectionString("sqlCS");
+            //string key = Environment.GetEnvironmentVariable("apiKey");
+
+            string client = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (client == "Sura")
+                services.AddScoped<IClientservice, SuraService>();
+            else
+                services.AddScoped<IClientservice, ClientService>();
+
+
             services.AddControllersWithViews();
         }
 
