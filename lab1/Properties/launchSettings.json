@@ -12,7 +12,6 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +19,6 @@
     "lab1": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
       "applicationUrl": "https://localhost:7001;http://localhost:7000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

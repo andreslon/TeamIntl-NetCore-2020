@@ -4,10 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using lab1.Data;
+using lab1.Data.Interfaces;
+using lab1.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +36,13 @@ namespace lab1
         {
             services.AddControllers();
 
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+
+            services.AddDbContext<TeamDbContext>(
+                options =>
+                    options.UseSqlServer("Server=tcp:team-netcore-server.database.windows.net,1433;Initial Catalog=team-netcore-db;Persist Security Info=False;User ID=team;Password=@medellin1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
+                );
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

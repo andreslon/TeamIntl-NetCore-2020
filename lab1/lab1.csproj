@@ -8,5 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lab1.Data\lab1.Data.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>
