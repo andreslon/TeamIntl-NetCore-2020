@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using lab1.Data.Entities;
 using lab1.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,34 +23,40 @@ namespace lab1.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var employees = EmployeeRepository.GetEmployees();
-
+            var employees = EmployeeRepository.GetEmployees(); 
             return Ok(employees);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(Guid id)
         {
-            return "value";
+            var employee = EmployeeRepository.GetEmployeeById(id);
+            return Ok(employee);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<IActionResult> Post([FromBody]Employee entity)
         {
+            var IsSuccess = await EmployeeRepository.SaveEmployee(entity);
+            return Ok(IsSuccess);   
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody]Employee entity)
         {
+            var IsSuccess = await EmployeeRepository.UpdateEmployee(id, entity);
+            return Ok(IsSuccess);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            var IsSuccess = await EmployeeRepository.DeleteEmployee(id);
+            return Ok(IsSuccess);
         }
     }
 }

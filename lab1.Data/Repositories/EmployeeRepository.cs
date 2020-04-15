@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using lab1.Data.Entities;
 using lab1.Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace lab1.Data.Repositories
 {
@@ -13,14 +15,25 @@ namespace lab1.Data.Repositories
         {
             DbContext = dbContext;
         }
-        public bool DeleteEmployee(Guid id)
+        public async Task<bool> DeleteEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = GetEmployeeById(id);
+                DbContext.Remove(entity);
+                await DbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public Employee GetEmployeeById(Guid id)
-        {
-            throw new NotImplementedException();
+        { 
+            Employee employee = DbContext.Employees.FirstOrDefault(x => x.Id == id);
+            return employee;
         }
 
         public List<Employee> GetEmployees()
@@ -29,14 +42,39 @@ namespace lab1.Data.Repositories
             return employees;
         }
 
-        public bool SaveEmployee(Employee employee)
+        public async Task<bool> SaveEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await DbContext.AddAsync(employee);
+                DbContext.Entry(employee).State = EntityState.Added;
+                await DbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            } 
         }
 
-        public bool UpdateEmployee(Guid id, Employee employee)
+        public async Task<bool> UpdateEmployee(Guid id, Employee employee)
         {
-            throw new NotImplementedException();
+            var entity = GetEmployeeById(id);
+            entity.Age = employee.Age;
+            entity.BirthDate = employee.BirthDate;
+            entity.LastName = employee.LastName;
+            entity.Name = employee.Name;
+
+            try
+            {
+                DbContext.Update(entity);
+                await DbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
