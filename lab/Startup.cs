@@ -18,7 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using Microsoft.OpenApi.Models;
-
+using GraphiQl;
 
 namespace lab
 {
@@ -100,10 +100,14 @@ namespace lab
 
             app.UseAuthorization();
 
+            app.UseGraphiQl("/graph");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }
