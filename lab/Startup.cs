@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using lab1.Data;
-using lab1.Data.Interfaces;
-using lab1.Data.Repositories;
+using lab.Data;
+using lab.Data.Interfaces;
+using lab.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,7 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 
-namespace lab1
+namespace lab
 {
     public class Startup
     {

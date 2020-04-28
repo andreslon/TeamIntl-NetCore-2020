@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'f1cc7cbd-ca7f-4833-8cf1-f5c5576a862a'
-  imageRepository: 'lab1api'
+  imageRepository: 'labapi'
   containerRegistry: 'teamnetcoreacr.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'

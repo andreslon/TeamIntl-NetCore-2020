@@ -9,12 +9,12 @@
             "dockerBuild": {
                 "tag": "teamintlnetcore2020:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/lab1/Dockerfile",
+                "dockerfile": "${workspaceFolder}/lab/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/lab1/lab1.csproj"
+                "appProject": "${workspaceFolder}/lab/lab.csproj"
             }
         },
         {
@@ -25,12 +25,12 @@
             ],
             "dockerBuild": {
                 "tag": "teamintlnetcore2020:latest",
-                "dockerfile": "${workspaceFolder}/lab1/Dockerfile",
+                "dockerfile": "${workspaceFolder}/lab/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/lab1/lab1.csproj"
+                "appProject": "${workspaceFolder}/lab/lab.csproj"
             }
         },
         {
@@ -41,7 +41,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/lab1/lab1.csproj",
+                "appProject": "${workspaceFolder}/lab/lab.csproj",
                 "enableDebugging": true
             }
         },
@@ -53,7 +53,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/lab1/lab1.csproj"
+                "appProject": "${workspaceFolder}/lab/lab.csproj"
             }
         }
     ]

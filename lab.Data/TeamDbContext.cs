@@ -1,7 +1,7 @@
 ﻿using System;
-using lab1.Data.Entities;
+using lab.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-namespace lab1.Data
+namespace lab.Data
 {
     public class TeamDbContext: DbContext
     {

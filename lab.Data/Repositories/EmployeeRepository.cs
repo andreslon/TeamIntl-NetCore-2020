@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using lab1.Data.Entities;
-using lab1.Data.Interfaces;
+using lab.Data.Entities;
+using lab.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace lab1.Data.Repositories
+namespace lab.Data.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {

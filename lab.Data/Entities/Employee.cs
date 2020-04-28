@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace lab1.Data.Entities
+namespace lab.Data.Entities
 {
     public class Employee
     {

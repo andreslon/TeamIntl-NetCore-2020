@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using lab1.Data.Entities;
+using lab.Data.Entities;
 
-namespace lab1.Data.Interfaces
+namespace lab.Data.Interfaces
 {
     public interface IEmployeeRepository
     { 
