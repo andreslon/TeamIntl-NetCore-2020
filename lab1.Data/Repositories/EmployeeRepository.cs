@@ -38,7 +38,7 @@ namespace lab1.Data.Repositories
 
         public List<Employee> GetEmployees()
         {
-            var employees = DbContext.Employees.ToList();
+            var employees = DbContext.Employees.Include(x=> x.Role).ToList();
             return employees;
         }
 
