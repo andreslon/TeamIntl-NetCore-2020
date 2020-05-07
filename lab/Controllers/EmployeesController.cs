@@ -23,9 +23,10 @@ namespace lab.Controllers
 
         // GET: api/values
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
-            var employees = EmployeeRepository.GetEmployees(); 
+            var employees = EmployeeRepository.GetEmployees();
             return Ok(employees);
         }
 
@@ -42,7 +43,7 @@ namespace lab.Controllers
         public async Task<IActionResult> Post([FromBody]Employee entity)
         {
             var IsSuccess = await EmployeeRepository.SaveEmployee(entity);
-            return Ok(IsSuccess);   
+            return Ok(IsSuccess);
         }
 
         // PUT api/values/5

@@ -38,10 +38,10 @@ namespace lab
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
-
+            var cs = Configuration.GetConnectionString("SQL_CS");
             services.AddDbContext<TeamDbContext>(
                 options =>
-                    options.UseSqlServer("Server=tcp:team-netcore-server.database.windows.net,1433;Initial Catalog=team-netcore-db;Persist Security Info=False;User ID=team;Password=@medellin1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
+                    options.UseSqlServer(cs)
                 );
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -78,7 +78,7 @@ namespace lab
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://localhost:9712";
+                    options.Authority = "https://localhost:44389";
                     options.RequireHttpsMetadata = false;
                     options.Audience = "api";
                 });
